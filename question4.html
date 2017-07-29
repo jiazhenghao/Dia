@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+    /***
+	该代码结果在Chrome，Safari，FireFox，Opera均进行过测试
+	但并没有在IE浏览器中测试，有兴趣的同学，请用IE测试
+    ***/
+    var name = "wage";
+    var x = Object();
+    x.name = "蛙哥";
+
+    function abc() {
+        console.log(this.name);
+    }
+   
+    abc.call(abc.call(x));
+
+    /***
+	有了question3的基础，这个就不难解释了。
+    答案就是
+    蛙哥
+    wage
+    两行输出
+
+    因为
+    第一步执行，abc.call(x)显然就是返回x对象的name，也就是 蛙哥
+    abc.call(x)依然是返回undefined
+    于是第二步，
+    abc.call(undefined);
+    所以this会去指向windows，原理跟question3的第二行输出是一样的。
+	
+    ***/
+
+    /***
+
+    好了，如果你真的理解了，请回答下面这个问题：
+    之前的四个输出结果是这样的
+    // abc.call(x);//蛙哥
+    // abc.call(this);//wage
+    // abc.call(abc());// wage wage 
+    // abc.call(abc.call(x));//蛙哥 wage
+
+    现在请你尝试修改一下之前的这段代码
+    var name = "wage";
+    var x = Object();
+    x.name = "蛙哥";
+
+    function abc() {
+        console.log(this.name);
+    }
+
+    使得前面三个输出结果不变
+    第四个输出，也就是abc.call(abc.call(x)); 
+    输出
+    蛙哥  蛙哥
+    
+    提示，修改起来很简单，不用大动干戈，想通原理就可以了。
+    ***/
+
+    </script>
+
+</body>
+
+</html>

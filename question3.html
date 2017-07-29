@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+    /***
+	该代码结果在Chrome，Safari，FireFox，Opera均进行过测试
+	但并没有在IE浏览器中测试，有兴趣的同学，请用IE测试
+    ***/
+    var name = "wage";
+    var x = Object();
+    x.name = "蛙哥";
+
+    function abc() {
+        console.log(this.name);
+    }
+   
+
+    abc.call(abc()); 
+
+    /***
+	这个答案就比较有意思了。
+	wage
+	wage
+	两行wage
+	
+	但有人说，不对啊，我这边控制台就输出了一个wage，少年，请注意看你的控制台，并查看images文件夹下面的questions3.png截图
+	你就会发现问题所在了
+
+	第一个wage怎么来的？
+	abc()率先执行，这时候的this是没有明确的对象的，于是this跳出了函数，指向了window对象，于是就输出了window对象的wage
+	当abc()这个函数执行完以后，它返回了什么？
+	返回的是undefined,因为你这个函数根本就没有return语句，所以返回的是个空屁，就是undefined
+	于是下一步执行的代码就是abc.call(undefined);
+	abc去调用了一个空对象，于是this先指向空，发现什么都没有，于是它就去指向了更外层的window，于是又输出了一遍wage
+
+	
+    ***/
+
+    </script>
+   
+</body>
+
+</html>

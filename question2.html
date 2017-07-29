@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+    /***
+	该代码结果在Chrome，Safari，FireFox，Opera均进行过测试
+	但并没有在IE浏览器中测试，有兴趣的同学，请用IE测试
+    ***/
+    var name = "wage";
+    var x = Object();
+    x.name = "蛙哥";
+
+    function abc() {
+        console.log(this.name);
+    }
+   
+
+    abc.call(this);//wage 
+    
+
+    /***
+	这个答案也很简单，函数abc通过call方法，调用了this，this就是window对象
+	window.name进行查找发现在第16行有定义过“wage”
+
+    PS：
+	如果有人不确定this是谁，你不妨试试直接console.log(this);看看调试台输出是什么
+
+    ***/
+
+    </script>
+    
+</body>
+
+</html>

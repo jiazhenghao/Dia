@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+    /***
+	该代码结果在Chrome，Safari，FireFox，Opera均进行过测试
+	但并没有在IE浏览器中测试，有兴趣的同学，请用IE测试
+    ***/
+    var name = "wage";
+    var x = Object();
+    x.name = "蛙哥";
+
+    function abc() {
+        console.log(this.name);
+    }
+   
+
+    abc.call(x); //蛙哥 
+
+    /***
+	这个答案显而易见，函数abc通过call方法，调用了x这个对象，于是this.name指向
+	x这个对象。故答案是蛙哥。
+	
+    ***/
+
+    </script>
+
+    
+</body>
+
+</html>
